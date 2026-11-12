@@ -1,0 +1,24 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Database and vector storage
+backend/chroma_data/
+backend/documents/
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+
+# Logs
+*.log
+
+# Editor/system files
+.vscode/
+.DS_Store

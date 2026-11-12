@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Knowledge AI - Documents</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/documents.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+            <div class="logo">✳</div>
+            <h2>Knowledge AI</h2>
+        </div>
+
+        <button
+            class="new-chat-button"
+            id="newChatButton"
+            type="button"
+        >
+            <span>＋</span> New chat
+        </button>
+
+        <nav class="navigation">
+
+            <a href="/" class="nav-item">
+                <span>◫</span> Chat
+            </a>
+
+            <a href="documents.html" class="nav-item active">
+                <span>▤</span> Documents
+            </a>
+
+        </nav>
+
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar bottom -->
+
+        <div class="sidebar-bottom">
+
+            <input
+                type="file"
+                id="fileUpload"
+                multiple
+                accept=".pdf,.docx,.txt"
+                hidden
+            >
+
+            <button
+                class="upload-button"
+                id="uploadButton"
+                type="button"
+            >
+                <span>＋</span> Upload documents
+            </button>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="workspace">
+
+                <div class="workspace-avatar">U</div>
+
+                <div>
+                    <strong>My Workspace</strong>
+                    <small>Personal workspace</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="main-content">
+
+        <!-- Top bar -->
+
+        <header class="topbar">
+
+            <button
+                class="menu-button"
+                id="sidebarToggle"
+                type="button"
+                aria-label="Toggle sidebar"
+                title="Toggle sidebar"
+            >
+                ☰
+            </button>
+
+            <div class="connection-status">
+
+                <span
+                    class="status-dot"
+                    id="connectionDot"
+                ></span>
+
+                <span id="connectionText">
+                    Checking connection...
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             FILE MANAGER
+        ====================================== -->
+
+        <section class="file-manager">
+
+            <!-- TOOLBAR -->
+
+            <div class="file-toolbar">
+
+                <!-- Search -->
+
+                <div class="file-search">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        id="documentSearch"
+                        placeholder="Search in My Documents..."
+                        aria-label="Search documents"
+                    >
+
+                </div>
+
+
+                <!-- Actions -->
+
+                <div class="file-toolbar-actions">
+
+                    <button
+                        class="file-action"
+                        id="newFolderButton"
+                        type="button"
+                        title="Create a new folder"
+                    >
+                        <span>＋</span>
+                        New folder
+                    </button>
+
+
+                    <button
+                        class="file-action"
+                        id="copyButton"
+                        type="button"
+                        disabled
+                        title="Copy selected items"
+                    >
+                        <span>▢</span>
+                        Copy
+                    </button>
+
+
+                    <button
+                        class="file-action"
+                        id="pasteButton"
+                        type="button"
+                        disabled
+                        title="Paste copied items"
+                    >
+                        <span>▣</span>
+                        Paste
+                    </button>
+
+
+                    <button
+                        class="file-action"
+                        id="moveButton"
+                        type="button"
+                        disabled
+                        title="Move selected items"
+                    >
+                        <span>↗</span>
+                        Move
+                    </button>
+
+
+                    <button
+                        class="file-action delete-action"
+                        id="deleteButton"
+                        type="button"
+                        disabled
+                        title="Delete selected items"
+                    >
+                        <span>⌫</span>
+                        Delete
+                    </button>
+
+
+                    <button
+                        class="file-action upload-action"
+                        id="pageUploadButton"
+                        type="button"
+                        title="Upload documents"
+                    >
+                        <span>↑</span>
+                        Upload
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 BREADCRUMBS
+            ====================================== -->
+
+            <div class="file-navigation">
+
+                <div
+                    id="breadcrumbs"
+                    class="breadcrumbs"
+                >
+
+                    <span>My Documents</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 FILE LIST + PREVIEW
+            ====================================== -->
+
+            <div class="file-content-area">
+
+                <!-- FILE LIST -->
+
+                <div class="file-list-container">
+
+                    <div class="file-list-header">
+
+                        <div>Name</div>
+
+                        <div>Date modified</div>
+
+                        <div>Type</div>
+
+                    </div>
+
+
+                    <div
+                        id="documentGrid"
+                        class="file-list"
+                    >
+
+                        <div class="file-empty">
+
+                            <div>📁</div>
+
+                            <strong>
+                                This folder is empty
+                            </strong>
+
+                            <p>
+                                Create a folder or upload a document
+                                to get started.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     DOCUMENT PREVIEW PANEL
+                ====================================== -->
+
+                <aside
+                    id="previewPanel"
+                    class="preview-panel"
+                    aria-label="Document preview"
+                >
+
+                    <!-- Preview header -->
+
+                    <div class="preview-header">
+
+                        <div class="preview-heading">
+
+                            <strong id="previewTitle">
+                                Document preview
+                            </strong>
+
+                            <small id="previewSubtitle">
+                                Select a document to preview it
+                            </small>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="closePreviewButton"
+                            class="preview-close"
+                            aria-label="Close preview"
+                            title="Close preview"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <!-- Preview content -->
+
+                    <div
+                        id="previewContent"
+                        class="preview-content"
+                    >
+
+                        <div class="preview-placeholder">
+
+                            <div>📄</div>
+
+                            <p>
+                                Select a document to see its contents.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script src="js/api.js"></script>
+<script src="js/documents.js"></script>
+
+</body>
+
+</html>
